@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
+import PropTypes from 'prop-types'
 
 const Person = ({img, name, age}) => {
   return(
@@ -9,6 +10,11 @@ const Person = ({img, name, age}) => {
       <h5>age: {age}</h5>
     </article>
   )
+}
+Person.propTypes = {
+  img: PropTypes.string,
+  name: PropTypes.string,
+  age: PropTypes.number
 }
 
 
