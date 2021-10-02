@@ -10,7 +10,20 @@ import './App.css'
 
 class Form extends Component {
     render() {
-        return <h1>Hey from react</h1>
+        return <section>
+            <article>
+                <form>
+                    <input type="text" name="firstName"/>
+                    <input type="text" name="lastName"/>
+                    <button type="submit">Submit</button>
+                </form>
+            </article>
+            <article>
+                <h1>People</h1>
+                <div></div>
+
+            </article>
+        </section>
     }
 }
 

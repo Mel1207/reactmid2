@@ -12,3 +12,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+form {
+  margin: 2em;
+}
+
+input {
+  display: block;
+  margin: 1rem; 
+}
+
+button {
+  margin: 0 1em;
+}
