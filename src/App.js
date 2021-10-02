@@ -1,43 +1,51 @@
 import React, { Component } from 'react'
 import './App.css'
 
-// Uncontrolled inputs with reff
+// React Fragment
+// and this.setState
+// asynchronous
+// functional this.setState()
 
-class Form extends Component {
-    handleSubmit = e => {
-        e.preventDefault()
+class Counter extends Component {
+    state = {
+        count: 0
+    }
 
-        const name = this.refs.myName;
-        const nameValue = name.value;
+    handleIncrease = () => {
+        console.log('called first:',  this.state.count)
+        this.setState({
+            count: this.state.count + 1
+        })
+        console.log('called second:',  this.state.count)
+    }
 
-        const email = this.email.value;
-       
-
-        const text = this.refs.myText;
-        text.style.color = 'red'
-
-        console.log(email, nameValue, text)
+    handleDecrease = () => {
+        // this.setState({
+        //     count: this.state.count - 1
+        // })
+        this.setState((state, propps) => {
+            return { count: state.count - propps.amount}
+        })
     }
 
     render() {
         return (
-            <section>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" ref="myName"/>
-                    <input type="email" ref={(typeText) => {this.email = typeText }}/>
-                    <button type="submit">Submit</button>
-                    
-                </form>
-                <p ref="myText">this is p</p>
-            </section>
+            <>
+                <div className="counterdiv">
+                    <button type="button" onClick={this.handleIncrease}>Increase</button>
+                    <span>Count: {this.state.count}</span>
+                    <button type="button" onClick={this.handleDecrease}>Decrease</button>
+                </div>
+            </>
         )
     }
+
 }
 
 export default class App extends Component {
     render() {
         return (
-            <Form />
+            <Counter amount="2"/>
         )
     }
 }
