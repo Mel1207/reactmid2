@@ -11,8 +11,10 @@ class Form extends Component {
     };
 
     handleChange = e => {
+        const value = e.target.value.toUpperCase()
+
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: value
         })
     }
 
