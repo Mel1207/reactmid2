@@ -1,61 +1,34 @@
 import React, { Component } from 'react'
 import './App.css'
 
-// controlled inputs 'use case'
+// Uncontrolled inputs with reff
 
 class Form extends Component {
-    state = {
-        firstName: '',
-        lastName: '',
-        people: []
-    };
-
-    handleChange = e => {
-        const value = e.target.value.toUpperCase()
-
-        this.setState({
-            [e.target.name]: value
-        })
-    }
-
     handleSubmit = e => {
-        e.preventDefault();
+        e.preventDefault()
 
-        const firstName = this.state.firstName
-        const lastName = this.state.lastName
+        const name = this.refs.myName;
+        const nameValue = name.value;
 
-        console.log(firstName, lastName)
+        const email = this.email.value;
+       
 
-        if(firstName.length > 0 && lastName.length > 0) {
-            const person = `${firstName} ${lastName} `;
-            this.setState({
-                people:[...this.state.people, person],
-                firstName: "",
-                lastName: ""
-            })
-        } else {
-            alert('please fill all fields')
-        }
-    };
+        const text = this.refs.myText;
+        text.style.color = 'red'
+
+        console.log(email, nameValue, text)
+    }
 
     render() {
         return (
             <section>
-                <article>
-                    <form onSubmit={this.handleSubmit}>
-                        <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange}/>
-                        <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange}/>
-                        <button type="submit">Submit</button>
-                    </form>
-                </article>
-                <article>
-                    <h1>People</h1>
-                    <ul>
-                        <li>{this.state.people}</li>
-                    </ul>
-                    {/* <div>{this.state.people}</div> */}
-
-                </article>
+                <form onSubmit={this.handleSubmit}>
+                    <input type="text" ref="myName"/>
+                    <input type="email" ref={(typeText) => {this.email = typeText }}/>
+                    <button type="submit">Submit</button>
+                    
+                </form>
+                <p ref="myText">this is p</p>
             </section>
         )
     }
