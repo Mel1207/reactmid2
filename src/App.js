@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 
-// controlled and uncontrolled inputs
-// JS
-// const input = document.getElementById('myText);
-// const inputValue = input.value;
-// React
-// value, onChange
+// controlled inputs 'use case'
 
 class Form extends Component {
     state = {
@@ -16,21 +11,8 @@ class Form extends Component {
     };
 
     handleChange = e => {
-        // console.log(e);
-        // console.log(e.target.name);
-        // console.log(e.target.value);
-
-        // const textValue = e.target.value;
-
-        // if(e.target.name === 'firstName') {
-        //     this.setState({
-        //         firstName: textValue,
-        //         // lastName: textValue
-        //     })
-        // }
-
         this.setState({
-            [e.target.name]:[e.target.value]
+            [e.target.name]: e.target.value
         })
     }
 
